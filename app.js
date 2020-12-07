@@ -5,7 +5,9 @@ const app = express()
 const graphqlHTTP = require("express-graphql")
 const {buildSchema} = require("graphql")
 const fetch = require("node-fetch")
-const SERVER_URL = "http://localhost:3000"
+
+const PORT = 4456
+const SERVER_URL = `http://localhost:${PORT}`
 
 const schema = buildSchema(`
   type Status{
@@ -203,4 +205,4 @@ app.get('/geoapi/distanceToUser/:lon/:lat/:username', function(req, res) {
 });
 
 app.get('/', (req, res) => res.send('Geo Demo!'))
-app.listen(3000, () => console.log('Example app listening on port 3000!'))
+app.listen(PORT, () => console.log(`Example app listening on port ${PORT}!`))
